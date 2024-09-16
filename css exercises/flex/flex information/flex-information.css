@@ -1,0 +1,40 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  .page{
+     display:flex;
+     flex-direction: column;
+     gap: 32px;
+     justify-content: center;
+     
+  }
+  
+  img {
+    width: 100px;
+    height: 100px;
+    flex: auto;
+  }
+  
+  .title{
+     font-size: 36px;
+     font-weight: 900;
+     display: inline-block;
+     text-align: center;
+  }
+
+  .content{
+   display: flex;
+   gap: 52px;
+   flex: auto;
+
+  }
+
+  .item{
+   display:flex;
+   flex-direction: column;
+   width: 200px;
+   flex-wrap: wrap;
+   text-align: center;
+   flex: auto;
+  }
