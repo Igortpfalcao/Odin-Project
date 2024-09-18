@@ -23,6 +23,7 @@ html, body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
   }
   
   .icon {
@@ -76,6 +77,7 @@ html, body {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      width: 100%;
   }
   .warning{
       font-weight: 999;
@@ -84,19 +86,17 @@ html, body {
   
   .paragraph{
       font-weight: 650;
-      font-size: 12px;
+      font-size: 14px;
   }
   
   .text{
-      display: flex;
+      display: inline-flex;
       flex-direction: column;
-      text-align: justify;
-      row-gap: 30px;
-      width: 400px;
-      justify-content: center;
+      text-align: justify;  
+      row-gap: 15px;
+      width: 370px;
+      margin-top: -40px;
+
+
   }
   
-  .buttons{
-      display: flex;
-      flex-direction: row;
-  }
