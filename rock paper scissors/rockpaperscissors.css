@@ -1,0 +1,28 @@
+
+
+
+#welcome{
+    display: flex;
+    justify-content: center;
+    font-size: 48px;
+    color: black;
+    font-weight: 800;
+}
+
+#buttons{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 150px;
+}
+
+button{
+    padding: 8px 16px;
+}
+
+#message{
+    margin-top: 150px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+}
