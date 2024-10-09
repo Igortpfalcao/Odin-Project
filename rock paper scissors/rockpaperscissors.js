@@ -1,22 +1,32 @@
 var humanScore = 0;
 var computerScore = 0;
 
-const message = document.querySelector("message");
+const message = document.querySelector("#message");
 
-const result = document.querySelector("result");
-result.style.cssText = "display: flex; justify-content: center; font-size: 18px; font-weight: 700; margin-top: 80px;" 
+const result = document.querySelector("#result")
 
-const choiceRock = document.querySelector("rock");
+result.style.cssText = "display: flex; justify-content: center; font-size: 18px; font-weight: 700; margin-top: 80px;"; 
 
-const choicePaper = document.querySelector("paper");
+const scoreComputer = document.querySelector("#scoreComputer")
 
-const choiceScissors = document.querySelector("scissors");
+const scoreHuman = document.querySelector("#scoreHuman")
 
-choiceRock.addEventListener("click", playround("Rock"));
+const choiceRock = document.querySelector("#rock");
 
-choicePaper.addEventListener("click", playround("Paper"));
+const choicePaper = document.querySelector("#paper");
 
-choiceScissors.addEventListener("click", playround("Scissors"));
+const choiceScissors = document.querySelector("#scissors");
+
+function start(){
+    choiceRock.addEventListener("click", () => playround("Rock"));
+
+    choicePaper.addEventListener("click", () => playround("Paper"));
+
+    choiceScissors.addEventListener("click", () => playround("Scissors"));
+}
+
+start()
+
 
 
 function getComputerChoice(){
@@ -37,7 +47,7 @@ function getComputerChoice(){
 
 function playround(input){
     const C = getComputerChoice();
-    message.textContent = "You chose" + input + "and the computer chose" + C + ".";
+    message.textContent = "You chose " + input + " and the computer chose " + C + ".";
     if (input === C){
         result.textContent = "It's a draw."
         return;
@@ -46,11 +56,13 @@ function playround(input){
         if (C === "Rock"){
             result.textContent = "Congrats! You've won!";
             humanScore += 1;
+            attScore("H");
             return;
         }
         else{
             result.textContent = "You lose...";
             computerScore += 1;
+            attScore("C");
             return;
         }
     }
@@ -58,25 +70,84 @@ function playround(input){
         if (C === "Scissors"){
             result.textContent = "Congrats! You've won!";
             humanScore += 1;
+            attScore("H");
             return;
         }
         else{
-            console.log("You lose...");
+            result.textContent = "You lose...";
             computerScore += 1;
+            attScore("C");
             return;
         }
     }
     else{
         if (C === "Paper"){
-            console.log("Congrats! You've won!");
+            result.textContent = "Congrats! You've won!";
             humanScore += 1;
+            attScore("H");
             return;
         }
         else{
-            console.log("You lose...");
+            result.textContent = "You lose...";
             computerScore += 1;
+            attScore("C");
             return;
         }
     }
 }
 
+function attScore(winner){
+    if (winner === "C"){
+        scoreComputer.textContent = parseInt(computerScore);
+        if (computerScore === 5){
+            message.textContent = "Computer won with a final score of: " + humanScore + "x" + computerScore + ".";
+            result.textContent = "Press \"play again\" to go for another game of RPS!";
+            const playAgain = document.createElement("button");
+            playAgain.textContent = "PLAY AGAIN";
+            playAgain.style.cssText = "text.align: center; padding: 8px 16px;";
+            playAgain.addEventListener("click", () => restartGame())
+            result.appendChild(playAgain);
+            choiceRock.removeEventListener("click", () => playround("Rock"));
+
+            choicePaper.removeEventListener("click", () => playround("Paper"));
+
+            choiceScissors.removeEventListener("click", () => playround("Scissors"));
+
+        }
+    }
+    
+    else{
+        scoreHuman.textContent = parseInt(humanScore);
+        if (humanScore === 5){
+            message.textContent = "You won with a final score of: " + humanScore + "x" + computerScore + ".";
+            result.textContent = "Press \"play again\" to go for another game of RPS!";
+            const playAgain = document.createElement("button");
+            playAgain.textContent = "PLAY AGAIN";
+            playAgain.style.cssText = "text.align: center; padding: 8px 16px; margin-left: 30px;";
+            playAgain.addEventListener("click", () => restartGame());
+            result.appendChild(playAgain);
+            choiceRock.removeEventListener("click", () => playround("Rock"));
+
+            choicePaper.removeEventListener("click", () => playround("Paper"));
+
+            choiceScissors.removeEventListener("click", () => playround("Scissors"));
+
+           
+        }
+    }
+}
+
+function restartGame(){
+    message.textContent = "Waiting for input...";
+    humanScore = 0;
+    computerScore = 0;    
+    scoreComputer.textContent = "";
+    scoreHuman.textContent = "";
+    result.textContent = "";
+    result.querySelector("button")?.remove();
+    start()
+    
+    
+
+
+}
