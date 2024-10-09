@@ -17,15 +17,14 @@ const choicePaper = document.querySelector("#paper");
 
 const choiceScissors = document.querySelector("#scissors");
 
-function start(){
-    choiceRock.addEventListener("click", () => playround("Rock"));
 
-    choicePaper.addEventListener("click", () => playround("Paper"));
+choiceRock.addEventListener("click", () => playround("Rock"));
 
-    choiceScissors.addEventListener("click", () => playround("Scissors"));
-}
+choicePaper.addEventListener("click", () => playround("Paper"));
 
-start()
+choiceScissors.addEventListener("click", () => playround("Scissors"));
+
+
 
 
 
@@ -107,11 +106,6 @@ function attScore(winner){
             playAgain.style.cssText = "text.align: center; padding: 8px 16px;";
             playAgain.addEventListener("click", () => restartGame())
             result.appendChild(playAgain);
-            choiceRock.removeEventListener("click", () => playround("Rock"));
-
-            choicePaper.removeEventListener("click", () => playround("Paper"));
-
-            choiceScissors.removeEventListener("click", () => playround("Scissors"));
 
         }
     }
@@ -126,11 +120,6 @@ function attScore(winner){
             playAgain.style.cssText = "text.align: center; padding: 8px 16px; margin-left: 30px;";
             playAgain.addEventListener("click", () => restartGame());
             result.appendChild(playAgain);
-            choiceRock.removeEventListener("click", () => playround("Rock"));
-
-            choicePaper.removeEventListener("click", () => playround("Paper"));
-
-            choiceScissors.removeEventListener("click", () => playround("Scissors"));
 
            
         }
@@ -145,8 +134,6 @@ function restartGame(){
     scoreHuman.textContent = "";
     result.textContent = "";
     result.querySelector("button")?.remove();
-    start()
-    
     
 
 
